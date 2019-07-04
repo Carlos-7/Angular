@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 const url = "http://localhost:3357/";
 
-
+ 
 @Injectable()
 export class EventoService{
-    isLogado: boolean = true;
+    isLogado: boolean = false;
 
     constructor(private http: HttpClient){
 
