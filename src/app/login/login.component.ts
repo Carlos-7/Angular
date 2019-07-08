@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   usuario: Usuario;
 
+  onSubmit(form){
+    console.log(form);
+    // this.resetar(form);
+  }
+
   constructor(private router: Router, private eventoService: EventoService) {
     this.usuario = new Usuario();
   }
@@ -18,18 +23,25 @@ export class LoginComponent implements OnInit {
   public logar(){
     return this.eventoService.getUsuario(this.usuario).subscribe(res=>{
       this.usuario = res;
-      
+
       if (this.usuario) {
         this.eventoService.isLogado = true;
         this.router.navigate(['evento']);
-        
+    
         console.log("Usuário logado.");
       }
       else{
+        
         console.log("acesso negado.");
       }
     });
   }
+
+  // resetar(form){
+  //   form.form.reset();  
+  // }
+
+  
 
   ngOnInit() {
   }

@@ -10,6 +10,10 @@ height: 100%;
 font-family: 'Numans', sans-serif;
 } */
 
+.ng-invalid:not(form):ng-touched {
+    border: 1px solid red;
+}
+
 .container{
 height: 100%;
 align-content: center;
@@ -76,10 +80,10 @@ background-color: rgba(232, 248, 248, 0.555);
 width: 100px;
 }
 
-.login_btn:hover{
-color: rgb(141, 63, 63)85, 170, 170);
+/* .login_btn:hover{
+color: rgb(141, 63, 63);
 background-color: white;
-}
+} */
 
 .links{
 color: white;
