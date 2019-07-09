@@ -1,7 +1,7 @@
 import { authGuard } from "./guarda/auth.guard.service";
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { EventoComponent } from './evento/evento.component';
@@ -10,6 +10,7 @@ import { EventoService } from "./service/evento.service";
 import { RouterModule, Routes } from "@angular/router";
 import { ErroComponent } from './erro/erro.component';
 import { CadastroEventoComponent } from './cadastro-evento/cadastro-evento.component';
+import { ErrorMsgComponent } from './error-msg/error-msg.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -26,14 +27,16 @@ const ROUTES: Routes = [
     EventoComponent,
     LoginComponent,
     ErroComponent,
-    CadastroEventoComponent
-    
+    CadastroEventoComponent,
+    ErrorMsgComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule
   ],
     
   providers: [EventoService, authGuard],

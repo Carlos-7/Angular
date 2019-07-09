@@ -1,7 +1,9 @@
+import { HttpClient } from "@angular/common/http";
 import { EventoService } from "./../service/evento.service";
 import { Usuario } from "./../entity/usuario";
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, MinLengthValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +13,26 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   usuario: Usuario;
 
-  onSubmit(form){
-    console.log(form);
-    // this.resetar(form);
+  formulario: FormGroup;
+
+  ngOnInit() {
+    this.formulario = this.formBuider.group({
+      senha: [null, Validators.required, Validators.minLength(3) ],
+      email: [null, Validators.required, Validators.email]  
+    });
   }
 
-  constructor(private router: Router, private eventoService: EventoService) {
+  constructor(private formBuider: FormBuilder, 
+              private router: Router, 
+              private eventoService: EventoService,
+              private http: HttpClient ) {
     this.usuario = new Usuario();
+  }
+
+  onSubmit(){
+    //this.http.post("https://httpbin.org.post", JSON.stringify(this.formulario.value)).subscribe(dados=>console.log(dados));
+    console.log(this.formulario);
+    // this.resetar(form);
   }
 
   public logar(){
@@ -37,13 +52,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  verificaValidTouched(campo){
+    return !this.formulario.get(campo).valid && this.formulario.get(campo).touched; 
+  }
+
+  aplicaCssError(campo){
+    return {
+      "has-error": this.verificaValidTouched(campo),
+      "has-feedback": this.verificaValidTouched(campo),
+    }
+  }
+
   // resetar(form){
   //   form.form.reset();  
   // }
 
-  
-
-  ngOnInit() {
-  }
 
 }
