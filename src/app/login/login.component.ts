@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.formBuider.group({
-      senha: [null, Validators.required, Validators.minLength(3) ],
-      email: [null, Validators.required, Validators.email]  
+      senha: [null, [Validators.required, Validators.minLength(3)] ],
+      email: [null, [Validators.required, Validators.email]]  
     });
   }
 

@@ -10,9 +10,9 @@ height: 100%;
 font-family: 'Numans', sans-serif;
 } */
 
-.ng-invalid:not(form){
+/* .ng-invalid.ng-touched:not(form){
     border: 1px solid red;
-}
+} */
 
 .container{
 height: 100%;
@@ -21,7 +21,7 @@ vertical-align: middle;
 }
 
 .card{
-height: 370px;
+height: auto;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;

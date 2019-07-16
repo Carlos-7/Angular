@@ -8,16 +8,15 @@ import { EventoComponent } from './evento/evento.component';
 import { LoginComponent } from './login/login.component';
 import { EventoService } from "./service/evento.service";
 import { RouterModule, Routes } from "@angular/router";
-import { ErroComponent } from './erro/erro.component';
 import { CadastroEventoComponent } from './cadastro-evento/cadastro-evento.component';
 import { ErrorMsgComponent } from './error-msg/error-msg.component';
+import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'evento', component: EventoComponent, canActivate:[authGuard]},
-  { path: 'cadatro.evento', component: CadastroEventoComponent, canActivate:[authGuard]},
-  { path: 'erro', component: ErroComponent, canActivate:[authGuard]}
+  { path: 'cadatro.evento', component: CadastroEventoComponent, canActivate:[authGuard]}
 ]
  
 
@@ -26,9 +25,9 @@ const ROUTES: Routes = [
     AppComponent,
     EventoComponent,
     LoginComponent,
-    ErroComponent,
     CadastroEventoComponent,
     ErrorMsgComponent,
+    CampoControlErroComponent,
 
   ],
   imports: [
